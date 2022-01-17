@@ -4,7 +4,7 @@ module Ra exposing
     , adding, subtracting, dividedByInt, dividedByFloat, multiplying, negated
     , ifElse, cond, condDefault, when, unless, until
     , converge, converge3, convergeList, curry, curry3, flip, fnContraMap, fnContraMap2, fnContraMap3, uncurry, uncurry3
-    , deduplicateConsecutiveItemsBy, isMemberOf
+    , isMemberOf, deduplicateConsecutiveItemsBy
     )
 
 {-| Ra supports Pointfree style in Elm by providing various combinators to work with Predicates, Relations, Math, Functions, and Flow Control.
@@ -43,6 +43,11 @@ Pointfree can be abused, but when it is appropriate pointfree style is
 ## Name and Relation to RamdaJS
 
 Ra is a subset of RamdaJS converted to Elm and excluding functions relating to topics indicated below. I originally toyed with naming this package simply R but that would create confusion with the R language.
+
+
+## Miscellaneous
+
+@docs isMemberOf, deduplicateConsecutiveItemsBy
 
 
 ### Excellent elm-community Extra packages such as

@@ -15,7 +15,7 @@ Pointfree can be abused, but when it is appropriate pointfree style is
 
 ### Chain and Composition Friendly Relations
 
-@docs lessThan, lessThanEqualTo, greaterThan, greaterThanEqualTo, equals, is
+@docs lessThan, lessThanEqualTo, greaterThan, greaterThanEqualTo, equals
 
 ### Chain and Composition Friendly Math
 
