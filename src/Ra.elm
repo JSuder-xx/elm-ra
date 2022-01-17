@@ -12,7 +12,7 @@ module Ra exposing
 Pointfree can be abused, but when it is appropriate pointfree style is
 
   - More Readable & Literate. The declaration of the lambda with an argument and repetitious application of the argument can obscure the meaning.
-  - Safer. It is impossible to inadvertently pass the wrong value because functions are only composed and not applied or called.
+  - Safer. It is impossible to inadvertently pass the wrong value because functions are only composed and not applied or called.el
 
 
 ### Predicate Combinators
@@ -49,13 +49,13 @@ Ra is a subset of RamdaJS converted to Elm and excluding functions relating to t
 
 Many of the RamdaJS functions or their equivalent functionality can be found in these packages.
 
-  - (Maybe.Extra)[<https://package.elm-lang.org/packages/elm-community/maybe-extra/latest/>]
-  - (List.Extra)[<https://package.elm-lang.org/packages/elm-community/list-extra/latest/>]
-      - aperture is (groupsOfWithStep)[<https://package.elm-lang.org/packages/elm-community/list-extra/latest/List-Extra#groupsOfWithStep>]
-  - (Dict.Extra)[<https://package.elm-lang.org/packages/elm-community/dict-extra/latest/>]
-      - (groupBy)[<https://package.elm-lang.org/packages/elm-community/dict-extra/2.4.0/Dict-Extra#groupBy>]
-      - indexedBy is (fromListBy)[<https://package.elm-lang.org/packages/elm-community/dict-extra/2.4.0/Dict-Extra#fromListBy>]
-      - countBy is one List.map away from (frequencies)[<https://package.elm-lang.org/packages/elm-community/dict-extra/2.4.0/Dict-Extra#frequencies>]
+  - [Maybe.Extra](https://package.elm-lang.org/packages/elm-community/maybe-extra/latest/)
+  - [List.Extra](https://package.elm-lang.org/packages/elm-community/list-extra/latest/)
+      - aperture is [groupsOfWithStep](https://package.elm-lang.org/packages/elm-community/list-extra/latest/List-Extra#groupsOfWithStep)
+  - [Dict.Extra](https://package.elm-lang.org/packages/elm-community/dict-extra/latest/)
+      - [groupBy](https://package.elm-lang.org/packages/elm-community/dict-extra/2.4.0/Dict-Extra#groupBy)
+      - indexedBy is [fromListBy](https://package.elm-lang.org/packages/elm-community/dict-extra/2.4.0/Dict-Extra#fromListBy)
+      - countBy is one List.map away from [frequencies](https://package.elm-lang.org/packages/elm-community/dict-extra/2.4.0/Dict-Extra#frequencies)
 
 
 ### Object Meta-Programming
