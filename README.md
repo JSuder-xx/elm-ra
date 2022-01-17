@@ -9,29 +9,15 @@ Pointfree can be abused, but when it is appropriate pointfree style is
 
 ## Categories
 
-### Predicate Combinators
-
-@docs allPass, anyPass, both, either, complement, false, true
-
-### Chain and Composition Friendly Relations
-
-@docs lessThan, lessThanEqualTo, greaterThan, greaterThanEqualTo, equals
-
-### Chain and Composition Friendly Math
-
-@docs adding, subtracting, dividedByInt, dividedByFloat, multiplying, negated
-
-### Flow Control
-
-@docs ifElse, cond, condDefault, when, unless, until
-
-### Function Combinators
-
-@docs converge, converge3, convergeList, curry, curry3, flip, fnContraMap, fnContraMap2, fnContraMap3, uncurry, uncurry3
+- Predicate Combinators: `allPass`, `anyPass`, `both`, `either`, `complement`, `false`, `true`
+- Chain and Composition Friendly Relations: `lessThan`, `lessThanEqualTo`, `greaterThan`, `greaterThanEqualTo`, `equals`
+- Chain and Composition Friendly Math: `adding`, `subtracting`, `dividedByInt`, `dividedByFloat`, `multiplying`, `negated`
+- Flow Control: `ifElse`, `cond`, `condDefault`, `when`, `unless`, `until`
+- Function Combinators: `converge`, `converge3`, `convergeList`, `curry`, `curry3`, `flip`, `fnContraMap`, `fnContraMap2`, `fnContraMap3`, `uncurry`, `uncurry3`
 
 ## Name and Relation to RamdaJS
 
-Ra is a subset of RamdaJS converted to Elm and excluding functions relating to topics indicated below. I originally toyed with naming this package simply R but that would create confusion with the R language.
+Ra is a subset of RamdaJS converted to Elm and excluding functions relating to topics indicated below. 
 
 ### Excellent elm-community Extra packages such as
 
