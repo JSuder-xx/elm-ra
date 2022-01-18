@@ -5,7 +5,7 @@ Ra supports Pointfree style in Elm by providing various combinators to work with
 Pointfree can be abused, but when it is appropriate pointfree style is
 
 - More Readable & Literate. The declaration of the lambda with an argument and repetitious application of the argument can obscure the meaning.
-- Safer. It is impossible to inadvertently pass the wrong value because functions are only composed and not applied or called.el
+- Safer. It is impossible to inadvertently pass the wrong value because functions are only composed and not applied or called.
 
 ## Categories
 
@@ -31,14 +31,14 @@ Many of the RamdaJS functions or their equivalent functionality can be found in 
   - indexedBy is [fromListBy](https://package.elm-lang.org/packages/elm-community/dict-extra/2.4.0/Dict-Extra#fromListBy)
   - countBy is one List.map away from [frequencies](https://package.elm-lang.org/packages/elm-community/dict-extra/2.4.0/Dict-Extra#frequencies)
 
-## Object Meta-Programming
+### Object Meta-Programming
 
 RamdaJS features a number of functions to manipulate JavaScript objects. The closest equivalent in Elm would be Dict which already features all of the necessary functions
 either through Core or Dict.Extra. Further, Dict is not the same as Record and has a number of tradeoffs when compared to Records
 
-- lose of explicit type contract
-  - requiring neurotic optionality checks (i.e. Dict.get returns a Maybe)
-- a Dict can only hold values of a single type while a Record may feature a different type for each field.
+- Loss of explicit type contract
+  - Requiring neurotic optionality checks (i.e. Dict.get returns a Maybe)
+- A Dict can only hold values of a single type while a Record may feature a different type for each field.
 
 ### Relating to Optics (Lens)
 

@@ -12,7 +12,7 @@ module Ra exposing
 Pointfree can be abused, but when it is appropriate pointfree style is
 
   - More Readable & Literate. The declaration of the lambda with an argument and repetitious application of the argument can obscure the meaning.
-  - Safer. It is impossible to inadvertently pass the wrong value because functions are only composed and not applied or called.el
+  - Safer. It is impossible to inadvertently pass the wrong value because functions are only composed and not applied or called.
 
 
 ## Categories
@@ -82,7 +82,7 @@ isMemberOf =
 -- ------------------------------------------------------------------------------
 
 
-{-| Deduplicate consecutive items in a list using a function to extra the element of interest.
+{-| Deduplicate consecutive items in a list using a function to extract the element of interest.
 
     deduplicateConsecutiveItemsBy identity [ 1, 1, 1, 2, 3, 3 ] -- [1, 2, 3]
 
@@ -282,7 +282,7 @@ both left right a =
 {-| Takes a list of predicates and returns a predicate that returns true for a given list of arguments if every one of the provided predicates is satisfied by those arguments.
 
     isAmazing : Person -> Bool
-    isAmazing = allPass [isKind, isCreative, isHardWorking, isIntelligent]
+    isAmazing = allPass [isKind, isCreative, isHardWorking]
 
 -}
 allPass : List (Predicate a) -> Predicate a
@@ -292,8 +292,8 @@ allPass preds a =
 
 {-| Takes a list of predicates and returns a predicate that returns true for a given list of arguments if at least one of the provided predicates is satisfied by those arguments.
 
-    hasAtLeastOneGoodQuality : Person -> Bool
-    hasAtLeastOneGoodQuality = anyPass [Person.isKind, Person.isCreative, Person.isHardWorking, Person.isIntelligent]
+    isOkay : Person -> Bool
+    isOkay = anyPass [isKind, isCreative, isHardWorking]
 
 -}
 anyPass : List (Predicate a) -> Predicate a
@@ -340,7 +340,7 @@ false =
 
     ifElse
         (.weightInLbs >> R.Relation.greaterThan 500)
-        (.name >> String.append "Sorry. You cannot ride the rollercoaster ")
+        (always "Sorry. You cannot ride the coaster.")
         (.name >> String.append "Enjoy your ride ")
 
 -}
@@ -437,9 +437,8 @@ until condition transform =
 
 {-| Designed for use in pipelines or currying. Returns a predicate that tests if the value is less than the first value given.
 
-    20 |> lessThan 10 -- False
-
-    20 |> lessThan 30 -- True
+    [5, 10, 11, 20] |> List.map (lessThan 10)
+    -- [True, False, False, False]
 
 -}
 lessThan : comparable -> comparable -> Bool
@@ -449,12 +448,8 @@ lessThan a b =
 
 {-| Designed for currying. Returns a predicate that tests if the value is less than or equal to the first value given.
 
-    20 |> lessThanEqualTo 10 -- False
-
-    20 |> lessThanEqualTo 20 -- True
-
-    [5, 10, 11, 20]
-    |> List.map (lessThanEqualto 10) -- [True, True, False, False]
+    [5, 10, 11, 20] |> List.map (lessThanEqualto 10)
+    -- [True, True, False, False]
 
 -}
 lessThanEqualTo : comparable -> Predicate comparable
@@ -464,12 +459,8 @@ lessThanEqualTo a b =
 
 {-| Designed for currying. Returns a predicate that tests if the value is greater than the first value given.
 
-    20 |> greaterThan 10 -- True
-
-    20 |> greaterThan 20 -- False
-
-    [5, 10, 11, 20]
-    |> List.map (greaterThan 10) -- [False, False, True, True]
+    [5, 10, 11, 20] |> List.map (greaterThan 10)
+    -- [False, False, True, True]
 
 -}
 greaterThan : comparable -> Predicate comparable
@@ -478,10 +469,6 @@ greaterThan a b =
 
 
 {-| Designed for currying. Returns a predicate that tests if the value is greater than or equal to the first value given.
-
-    20 |> greaterThanEqualTo 10 -- True
-
-    20 |> greaterThanEqualTo 20 -- False
 
     [5, 10, 11, 20]
     |> List.map (greaterThanEqualTo 10) -- [False, True, True, True]
@@ -495,7 +482,7 @@ greaterThanEqualTo a b =
 {-| A natural language alias for `==` that also helps to avoid parenthesis when writing point-free flows
 
     employees
-    |> List.filter <| .employmentType >> equals Contractor
+    |> List.filter (.employmentType >> equals Contractor)
 
 -}
 equals : a -> Predicate a
@@ -511,11 +498,8 @@ equals =
 
 {-| A literate alias for addition that is nice for building functional pipelines by avoiding parenthesis.
 
-    List.map <| adding 5
-
-rather than
-
-    List.map <| (+) 5
+    [5, 10, 15, 20] |> List.map (adding 5)
+    -- [10, 15, 20, 25]
 
 -}
 adding : number -> number -> number
@@ -525,11 +509,9 @@ adding a b =
 
 {-| Subtraction alias designed for pipelines i.e. the order is swapped such that the subtrahend is the first argument.
 
-    10
-    |> subtracting 4 -- 6
-
     [20, 30, 40]
-    |> List.map (subtracting 6) -- [14, 24, 34]
+    |> List.map (subtracting 6)
+    -- [14, 24, 34]
 
 -}
 subtracting : number -> number -> number
@@ -546,11 +528,8 @@ multiplying =
 
 {-| Division designed for pipelines i.e. the divisor is the first argument.
 
-    20
-    |> divideByInt 4 -- 5
-
-    [20, 32, 40]
-    |> List (divideByInt 4) -- [5, 8, 10]
+    [20, 32, 40] |> List (divideByInt 4)
+    -- [5, 8, 10]
 
 -}
 dividedByInt : Int -> Int -> Int
@@ -560,11 +539,8 @@ dividedByInt divisor dividend =
 
 {-| Division designed for pipelines i.e. the divisor is the first argument.
 
-    20
-    |> dividedByFloat 2.5 -- 8.0
-
-    [20, 25, 26.25]
-    |> List (divideByFloat 2.5) -- [8.0, 10.0, 10.5]
+    [20, 25, 26.25] |> List (divideByFloat 2.5)
+    -- [8.0, 10.0, 10.5]
 
 -}
 dividedByFloat : Float -> Float -> Float

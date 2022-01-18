@@ -3,7 +3,7 @@
     "name": "jsuder-xx/elm-ra",
     "summary": "Support for Pointfree style in Elm with a subset of Ramda functions.",
     "license": "MIT",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "exposed-modules": [
         "Ra"
     ],

@@ -1,4 +1,4 @@
-module LogicTest exposing (..)
+module FlowControlTest exposing (..)
 
 import Expect
 import Ra
