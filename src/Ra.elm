@@ -10,58 +10,6 @@ module Ra exposing
 
 {-| Ra supports Pointfree style in Elm by providing various combinators to work with Predicates, Relations, Math, Functions, and Flow Control.
 
-The value of Pointfree is to improve readability and safety. The goal is not to reduce keystrokes or to seem clever!
-
-Generally, readable pointfree style involves trading low signal lambda argument names for high signal top-level function names. Just as the return on investment of unit testing
-increases when the code under test relies on abstractions rather than concretions (DI), pointfree return on investment increases when the code is written to declare
-normalized (typically small) and meaningfully named top level functions. Remember that the goal is to increase the ratio of semantically rich domain terms to programming language and
-computer science-y tokens. Pointfree becomes an indecipherable mess when expressions contain more combinators than they do named domain functions. This is often a sign of anemic types or
-functions that do too much such that they cannot be re-composed.
-
-
-## Less Decoding
-
-The declaration of a lambda with an argument and repetitious application of the argument introduces noise that can obscure the meaning by forcing the reader to decode.
-
-```elm
-|> List.filter (\person -> person.isHungy && (Person.canEat meal person))
-```
-
-By contrast, the pointfree version is purely declarative, has fewer moving parts, and a less ambiguous interpretation.
-
-```elm
-|> List.filter (both .isHungry (Person.canEat meal))
-```
-
-A lambda creates an execution context that captures the outer enclosing environment. The result is that the reader must _consider_ the possible
-impact of code at an elevated scope which both increases the cognitive load of reading the code and also increases the possibility for certain mistakes.
-
-
-## Safer
-
-When creating a lambda it is impossible to inadvertently apply values from the outer scope, but this is impossible with pointfree because functions are only composed and not applied or called. Consider the code below
-which checks if the passed `person` is hungry and then checks if `personB` can eat the meal (where `personB` has presumably been declared in an outer scope).
-
-```elm
--- Whoops! personB is a typo (possibly from code completion) that type-checks but is not what the author intended
-|> List.filter (\person -> person.isHungy && (Person.canEat meal personB))
-```
-
-By contrast, the declarative pointfree version provides no opportunity to make such a mistake. The predicate will operate on only a single person.
-
-```elm
-|> List.filter (both .isHungry (Person.canEat meal))
-```
-
-
-## Increased Signal
-
-When writing pointfree where it makes sense, it subsequently increases the information communicated to the reader when pointfree is **not** used. For example, when observing a lambda one might reasonably suspect
-
-  - it is required for recursion
-  - or there are multiple arguments that must be combined in interesting ways
-  - or there is interesting interaction with arguments and let bindings in the outer scope.
-
 
 ## Categories
 
